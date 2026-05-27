@@ -48,18 +48,43 @@ header h1 {
     display: none !important;
 }
 
+/* ホーム画面のヘッダーレイアウト */
+.home-header-area {
+    display: flex;
+    width: 100%;
+    gap: 15px;
+    align-items: stretch;
+}
+
 .system-message {
     background-color: #111;
     border-left: 4px solid #ff3333;
-    padding: 20px;
-    width: 100%;
+    padding: 15px;
+    flex: 1;
     text-align: left;
+}
+
+/* 現実逃避ボタン（猫） */
+.btn-escape {
+    background-color: #2e1a4d;
+    color: #cc99ff;
+    border: 1px solid #5c3399;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+}
+.btn-escape:hover {
+    background-color: #442673;
+    color: #fff;
 }
 
 .blink {
     color: #888;
     font-size: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     animation: blink 1.5s infinite;
 }
 
@@ -69,13 +94,12 @@ header h1 {
 }
 
 .alert-text {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 /* ボタン設定 */
 button {
-    cursor: pointer;
     font-weight: bold;
     transition: all 0.2s ease;
 }
@@ -90,7 +114,6 @@ button {
     width: 100%;
     max-width: 400px;
 }
-
 .btn-primary:hover { background-color: #cc0000; }
 
 .btn-secondary {
@@ -102,13 +125,9 @@ button {
     border-radius: 20px;
     margin-top: 10px;
 }
+.btn-secondary:hover { color: #fff; border-color: #888; }
 
-.btn-secondary:hover {
-    color: #fff;
-    border-color: #888;
-}
-
-/* 【新設】タイムラインUI */
+/* タイムラインUI */
 .timeline {
     width: 100%;
     background-color: #111;
@@ -138,31 +157,11 @@ button {
     gap: 10px;
 }
 
-.tl-user {
-    font-size: 12px;
-    color: #ff3333;
-    font-weight: bold;
-}
-
-.tl-result {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-.tl-result span {
-    color: #ff3333;
-}
-
-.good-text {
-    color: #00ff66 !important;
-}
-
-.tl-param-mini {
-    font-size: 11px;
-    color: #666;
-}
-
+.tl-user { font-size: 12px; color: #ff3333; font-weight: bold; }
+.tl-result { font-size: 16px; font-weight: bold; margin: 5px 0; }
+.tl-result span { color: #ff3333; }
+.good-text { color: #00ff66 !important; }
+.tl-param-mini { font-size: 11px; color: #666; }
 .tl-face-dummy {
     font-size: 11px;
     color: #444;
@@ -179,7 +178,6 @@ button {
     gap: 20px;
     width: 100%;
 }
-
 @media (max-width: 768px) {
     .result-layout { flex-direction: column; }
 }
@@ -191,7 +189,6 @@ button {
     border-radius: 6px;
     padding: 20px;
 }
-
 .result-panel { text-align: center; }
 
 .fortune-badge {
@@ -201,15 +198,8 @@ button {
     margin-bottom: 15px;
 }
 
-.system-comment {
-    font-size: 14px;
-    color: #ccc;
-    margin-bottom: 25px;
-    min-height: 40px;
-}
-
+.system-comment { font-size: 14px; color: #ccc; margin-bottom: 25px; min-height: 40px; }
 .parameters { text-align: left; margin-bottom: 25px; }
-
 .param-row {
     margin-bottom: 12px;
     font-size: 12px;
@@ -218,7 +208,6 @@ button {
     justify-content: space-between;
     gap: 10px;
 }
-
 .param-row span { width: 110px; }
 
 .bar-container {
@@ -237,14 +226,7 @@ button {
 }
 
 .param-val { width: 35px !important; text-align: right; font-family: monospace; }
-
-.total-eval {
-    border-top: 1px dashed #444;
-    padding-top: 15px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
+.total-eval { border-top: 1px dashed #444; padding-top: 15px; font-size: 16px; font-weight: bold; }
 #total-eval-val { color: #ff3333; }
 
 .video-wrapper {
@@ -255,14 +237,7 @@ button {
     border-radius: 4px;
     overflow: hidden;
 }
-
-#video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scaleX(-1);
-}
-
+#video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
 .camera-overlay {
     position: absolute;
     top: 10px;
@@ -276,18 +251,10 @@ button {
 }
 
 .ai-analysis h3 { font-size: 13px; color: #888; margin-bottom: 8px; }
-
 #ai-face-analysis { font-size: 14px; color: #fff; font-weight: bold; margin-bottom: 5px; }
-
 .ai-advice { font-size: 12px; color: #ffaa00; }
 
-.action-area {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
+.action-area { width: 100%; display: flex; flex-direction: column; align-items: center; }
 .btn-share {
     background-color: #fff;
     color: #000;
@@ -298,5 +265,31 @@ button {
     width: 100%;
     max-width: 300px;
 }
-
 .btn-share:hover { background-color: #ccc; }
+
+/* 【新設】現実逃避画面（モーダル）のスタイル */
+.escape-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #ffe6f2; /* ここだけピンクの優しい世界 */
+    color: #ff66a3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    text-align: center;
+}
+.escape-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(255,102,163,0.2);
+    max-width: 90%;
+}
+.cat-icon { font-size: 60px; margin-bottom: 15px; animation: bounce 0.5s infinite alternate; }
+@keyframes bounce { 
+    from { transform: translateY(0); } 
+    to { transform: translateY(-10px); } 
+}
+.escape-content h2 { font-size: 22px; margin-bottom: 10px; font-weight: bold; }
+.escape-content p { font-size: 14px; color: #666; }

@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const goDrawBtn = document.getElementById('go-draw-btn');
     const backHomeBtn = document.getElementById('back-home-btn');
+    const escapeBtn = document.getElementById('escape-btn'); // 逃避ボタン
     const homeView = document.getElementById('home-view');
     const resultView = document.getElementById('result-view');
+    const escapeModal = document.getElementById('escape-modal'); // 逃避画面
     const video = document.getElementById('video');
 
-    let localStream = null; // カメラのストリームを保存する変数
+    let localStream = null;
 
     const fortunes = [
         {
@@ -34,21 +36,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // 1. ホーム画面からおみくじ画面へ行く処理
+    // 【新設】現実逃避（猫）ボタンを押したときの処理
+    escapeBtn.addEventListener('click', () => {
+        // 優しい世界（モーダル）を表示
+        escapeModal.classList.remove('hide');
+
+        // 正確に1秒（1000ミリ秒）後に強制終了して現実に戻す
+        setTimeout(() => {
+            escapeModal.classList.add('hide');
+            alert('現実を見ろ。');
+        }, 1000);
+    });
+
+    // おみくじ画面へ
     goDrawBtn.addEventListener('click', async () => {
         homeView.classList.add('hide');
         resultView.classList.remove('hide');
 
-        // メーターの幅をはじめは0%にリセット
         document.getElementById('bar-ronpa').style.width = '0%';
         document.getElementById('bar-muda').style.width = '0%';
         document.getElementById('bar-seizon').style.width = '0%';
 
-        // 抽選
         const rand = Math.random();
         let selected = rand < 0.1 ? fortunes[2] : (rand < 0.5 ? fortunes[1] : fortunes[0]);
 
-        // 結果をセット
         document.getElementById('fortune-badge').innerText = selected.badge;
         document.getElementById('system-comment').innerText = selected.comment;
         document.getElementById('total-eval-val').innerText = selected.eval;
@@ -57,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('val-muda').innerText = `${selected.muda}%`;
         document.getElementById('val-seizon').innerText = `${selected.seizon}%`;
 
-        // カメラ起動
         try {
             localStream = await navigator.mediaDevices.getUserMedia({ 
                 video: { facingMode: 'user' }, 
@@ -71,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // メーターを伸ばし、AI判定を出す
         setTimeout(() => {
             document.getElementById('bar-ronpa').style.width = `${selected.ronpa}%`;
             document.getElementById('bar-muda').style.width = `${selected.muda}%`;
@@ -82,14 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
     });
 
-    // 2. 結果画面からホーム画面に戻る処理
+    // ホームに戻る
     backHomeBtn.addEventListener('click', () => {
-        // カメラが起動していれば止める（ブラウザのカメラ使用中マークを消すため）
         if (localStream) {
             localStream.getTracks().forEach(track => track.stop());
             localStream = null;
         }
-
         resultView.classList.add('hide');
         homeView.classList.remove('hide');
     });
