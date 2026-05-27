@@ -14,15 +14,15 @@
 
         <main id="app-main">
             <div id="home-view" class="view">
-                <div class="home-header-area">
-                    <div class="system-message">
-                        <p class="blink">SYSTEM ONLINE...</p>
-                        <p class="alert-text">本日も冴えない顔がタイムラインに並んでいます。</p>
-                    </div>
-                    <button id="escape-btn" class="btn-escape">現実逃避</button>
+                <div class="system-message">
+                    <p class="blink">SYSTEM ONLINE...</p>
+                    <p class="alert-text">本日も冴えない顔がタイムラインに並んでいます。</p>
                 </div>
                 
-                <button id="go-draw-btn" class="btn-primary">自分の現実を見る（おみくじ）</button>
+                <div class="main-buttons">
+                    <button id="escape-btn" class="btn-escape-large">現実逃避（推奨）</button>
+                    <button id="go-draw-btn" class="btn-primary">自分の現実を見る（おみくじ）</button>
+                </div>
 
                 <div class="timeline">
                     <h3>他人の現実一覧</h3>
@@ -111,6 +111,10 @@
                     <h2>あなたは毎日がんばってるよ</h2>
                     <p>たまには休んで、自分をいっぱい褒めてあげてね……</p>
                 </div>
+            </div>
+
+            <div id="reality-shock-modal" class="shock-modal hide">
+                <div class="shock-text">現実を見ろ。</div>
             </div>
         </main>
     </div>

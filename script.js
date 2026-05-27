@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const homeView = document.getElementById('home-view');
     const resultView = document.getElementById('result-view');
     const escapeModal = document.getElementById('escape-modal');
+    const realityShockModal = document.getElementById('reality-shock-modal'); // 真っ暗画面
     const video = document.getElementById('video');
 
     let localStream = null;
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             badge: '大凶',
             comment: '想定しうる最悪のタイムラインを歩んでいます。早急な軌道修正を推奨します。',
             ronpa: 100, muda: 95, seizon: 12,
-            eval: 'お、おう。',
+            eval: 'お、おう. ',
             face: '感情分析：思考停止、完全な虚無。',
             advice: 'かける言葉も見当たりません。鏡を見て現実を受け止めてください。'
         },
@@ -36,14 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // 現実逃避ボタンを押したときの処理（1秒でポップアップ無しで消える）
+    // 【大幅強化】現実逃避ボタンのタイマー連携処理
     escapeBtn.addEventListener('click', () => {
+        // ステップ1: 優しいピンク画面を1秒表示
         escapeModal.classList.remove('hide');
 
-        // ポップアップを削除し、1秒後にただ画面を閉じる
         setTimeout(() => {
+            // ステップ2: 1秒後、ピンク画面を隠して「真っ暗画面に赤文字」を2秒表示
             escapeModal.classList.add('hide');
-        }, 1000);
+            realityShockModal.classList.remove('hide');
+
+            setTimeout(() => {
+                // ステップ3: さらに2秒後（合計3秒後）、真っ暗画面を隠してホームへ完全帰還
+                realityShockModal.classList.add('hide');
+            }, 2000); // 2秒間表示
+
+        }, 1000); // 1秒間表示
     });
 
     // おみくじ画面へ

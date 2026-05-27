@@ -48,36 +48,65 @@ header h1 {
     display: none !important;
 }
 
-.home-header-area {
-    display: flex;
-    width: 100%;
-    gap: 15px;
-    align-items: stretch;
-}
-
 .system-message {
     background-color: #111;
     border-left: 4px solid #ff3333;
     padding: 15px;
-    flex: 1;
+    width: 100%;
     text-align: left;
 }
 
-.btn-escape {
-    background-color: #222;
+/* ボタンレイアウト */
+.main-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    gap: 15px;
+}
+
+button {
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #ff3333;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 100%;
+}
+.btn-primary:hover { background-color: #cc0000; }
+
+/* 【変更】わかりやすくなった大容量現実逃避ボタン */
+.btn-escape-large {
+    background: linear-gradient(135deg, #ff66b2, #9933ff);
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(255, 102, 178, 0.4);
+}
+.btn-escape-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 102, 178, 0.6);
+}
+
+.btn-secondary {
+    background-color: transparent;
     color: #888;
     border: 1px solid #444;
-    border-radius: 4px;
-    padding: 10px 15px;
-    font-size: 11px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 20px;
+    margin-top: 10px;
 }
-.btn-escape:hover {
-    background-color: #333;
-    color: #fff;
-}
+.btn-secondary:hover { color: #fff; border-color: #888; }
 
 .blink {
     color: #888;
@@ -96,34 +125,7 @@ header h1 {
     line-height: 1.4;
 }
 
-button {
-    font-weight: bold;
-    transition: all 0.2s ease;
-}
-
-.btn-primary {
-    background-color: #ff3333;
-    color: #fff;
-    border: none;
-    padding: 15px 40px;
-    font-size: 16px;
-    border-radius: 4px;
-    width: 100%;
-    max-width: 400px;
-}
-.btn-primary:hover { background-color: #cc0000; }
-
-.btn-secondary {
-    background-color: transparent;
-    color: #888;
-    border: 1px solid #444;
-    padding: 10px 20px;
-    font-size: 14px;
-    border-radius: 20px;
-    margin-top: 10px;
-}
-.btn-secondary:hover { color: #fff; border-color: #888; }
-
+/* タイムライン */
 .timeline {
     width: 100%;
     background-color: #111;
@@ -168,6 +170,7 @@ button {
     width: 140px;
 }
 
+/* 結果画面 */
 .result-layout {
     display: flex;
     gap: 20px;
@@ -262,7 +265,7 @@ button {
 }
 .btn-share:hover { background-color: #ccc; }
 
-/* 現実逃避モーダルのスタイル */
+/* 1秒用の癒やしモーダル */
 .escape-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -282,9 +285,26 @@ button {
     max-width: 90%;
 }
 .heart-icon { font-size: 60px; margin-bottom: 15px; animation: heartbeat 0.8s infinite alternate; }
-@keyframes heartbeat { 
-    from { transform: scale(1); } 
-    to { transform: scale(1.1); } 
-}
+@keyframes heartbeat { from { transform: scale(1); } to { transform: scale(1.1); } }
 .escape-content h2 { font-size: 22px; margin-bottom: 10px; font-weight: bold; }
 .escape-content p { font-size: 14px; color: #666; }
+
+/* 【新設】真っ暗・赤文字モーダル（2秒間用） */
+.shock-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000000; /* 完全な漆黒 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* 癒やしモーダルの上に被せる */
+}
+.shock-text {
+    color: #ff0000; /* 純粋な赤 */
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 5px;
+    font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+    animation: pulse 0.2s infinite alternate; /* 細かく震えるような演出 */
+}
+@keyframes pulse { from { transform: scale(1); } to { transform: scale(1.03); } }
