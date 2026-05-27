@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const goDrawBtn = document.getElementById('go-draw-btn');
     const backHomeBtn = document.getElementById('back-home-btn');
-    const escapeBtn = document.getElementById('escape-btn');
+    const escapeBtn = document.getElementById('escape-btn'); // 端っこのボタン
     const homeView = document.getElementById('home-view');
     const resultView = document.getElementById('result-view');
     const escapeModal = document.getElementById('escape-modal');
-    const realityShockModal = document.getElementById('reality-shock-modal'); // 真っ暗画面
+    const realityShockModal = document.getElementById('reality-shock-modal');
     const video = document.getElementById('video');
 
     let localStream = null;
@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
             badge: '大凶',
             comment: '想定しうる最悪のタイムラインを歩んでいます。早急な軌道修正を推奨します。',
             ronpa: 100, muda: 95, seizon: 12,
-            eval: 'お、おう. ',
+            eval: 'お、おう。',
             face: '感情分析：思考停止、完全な虚無。',
             advice: 'かける言葉も見当たりません。鏡を見て現実を受け止めてください。'
         },
         {
             badge: 'いいね',
-            comment: '珍しくまともな数値です。……本当に実力ですか？ 運の無駄遣いですね。',
+            comment: '珍しくままとりな数値です。……本当に実力ですか？ 運の無駄遣いですね。',
             ronpa: 15, muda: 20, seizon: 99,
             eval: 'いいね（※ただし明日死ぬかもしれません）',
             face: '感情分析：微小な慢心、ニヤケ顔。',
@@ -37,22 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // 【大幅強化】現実逃避ボタンのタイマー連携処理
+    // 端っこの現実逃避ボタンを押したときの処理
     escapeBtn.addEventListener('click', () => {
-        // ステップ1: 優しいピンク画面を1秒表示
+        // 1秒間の優しいピンク画面
         escapeModal.classList.remove('hide');
 
         setTimeout(() => {
-            // ステップ2: 1秒後、ピンク画面を隠して「真っ暗画面に赤文字」を2秒表示
+            // 1秒後：ピンク画面を閉じて、真っ暗＋赤文字画面を2秒表示
             escapeModal.classList.add('hide');
             realityShockModal.classList.remove('hide');
 
             setTimeout(() => {
-                // ステップ3: さらに2秒後（合計3秒後）、真っ暗画面を隠してホームへ完全帰還
+                // さらに2秒後：真っ暗画面を閉じて、何事もなくホームへ復帰
                 realityShockModal.classList.add('hide');
-            }, 2000); // 2秒間表示
+            }, 2000); // 2秒
 
-        }, 1000); // 1秒間表示
+        }, 1000); // 1秒
     });
 
     // おみくじ画面へ
