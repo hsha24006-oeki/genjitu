@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夢ばっか見ず現実をみろ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>夢ばっか見ず現実をみろ</h1>
+        </header>
+
+        <main id="app-main">
+            <div id="start-view" class="view">
+                <div class="system-message">
+                    <p class="blink">SYSTEM ONLINE...</p>
+                    <p class="alert-text">本日も冴えない顔をしていますね。それでは現実をどうぞ。</p>
+                </div>
+                <button id="draw-btn" class="btn-primary">現実を見る（おみくじを引く）</button>
+            </div>
+
+            <div id="result-view" class="view hide">
+                <div class="result-layout">
+                    
+                    <div class="result-panel">
+                        <h2>今日の現実</h2>
+                        <div class="fortune-badge" id="fortune-badge">凶</div>
+                        <p class="system-comment" id="system-comment">あなたの感情は非生産的です。</p>
+                        
+                        <div class="parameters">
+                            <div class="param-row">
+                                <span>論破される確率</span>
+                                <div class="bar-container"><div class="bar" id="bar-ronpa"></div></div>
+                                <span class="param-val" id="val-ronpa">98%</span>
+                            </div>
+                            <div class="param-row">
+                                <span>無駄遣い度</span>
+                                <div class="bar-container"><div class="bar" id="bar-muda"></div></div>
+                                <span class="param-val" id="val-muda">85%</span>
+                            </div>
+                            <div class="param-row">
+                                <span>本日の生存確率</span>
+                                <div class="bar-container"><div class="bar" id="bar-seizon"></div></div>
+                                <span class="param-val" id="val-seizon">40%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="total-eval">
+                            総合評価：<span id="total-eval-val">お、おう。</span>
+                        </div>
+                    </div>
+
+                    <div class="camera-panel">
+                        <div class="video-wrapper">
+                            <video id="video" autoplay playsinline></video>
+                            <div class="camera-overlay">REC</div>
+                        </div>
+                        <div class="ai-analysis">
+                            <h3>冷徹なAIによる表情分析</h3>
+                            <p id="ai-face-analysis">分析中...</p>
+                            <p class="ai-advice" id="ai-advice">現実から目を逸らさないでください。</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="action-area">
+                    <button id="share-btn" class="btn-share">現実をシェアする <span class="bereal-badge">BeReal.</span></button>
+                    <p class="next-notice">次回の現実通達：明日 08:00</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
