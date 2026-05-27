@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             badge: 'いいね',
-            comment: '珍しくままとりな数値です。……本当に実力ですか？ 運の無駄遣いですね。',
+            comment: '珍しくまともな数値です。……本当に実力ですか？ 運の無駄遣いですね。',
             ronpa: 15, muda: 20, seizon: 99,
             eval: 'いいね（※ただし明日死ぬかもしれません）',
             face: '感情分析：微小な慢心、ニヤケ顔。',
@@ -37,22 +37,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // 端っこの現実逃避ボタンを押したときの処理
+    // 【時間変更】現実逃避ボタンを押したときの処理
     escapeBtn.addEventListener('click', () => {
-        // 1秒間の優しいピンク画面
+        // 優しいピンク画面を表示
         escapeModal.classList.remove('hide');
 
         setTimeout(() => {
-            // 1秒後：ピンク画面を閉じて、真っ暗＋赤文字画面を2秒表示
+            // 【ここを3秒（3000ms）に変更しました】
+            // 3秒心地よくさせた後、一瞬で地獄へ突き落とす
             escapeModal.classList.add('hide');
             realityShockModal.classList.remove('hide');
 
             setTimeout(() => {
-                // さらに2秒後：真っ暗画面を閉じて、何事もなくホームへ復帰
+                // さらに2秒後、真っ暗画面を閉じてホームへ復帰
                 realityShockModal.classList.add('hide');
-            }, 2000); // 2秒
+            }, 2000); // 2秒（ここはそのまま）
 
-        }, 1000); // 1秒
+        }, 3000); // 1000から3000（3秒）に変更
     });
 
     // おみくじ画面へ
