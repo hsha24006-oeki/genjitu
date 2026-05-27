@@ -13,17 +13,48 @@
         </header>
 
         <main id="app-main">
-            <div id="start-view" class="view">
+            <div id="home-view" class="view">
                 <div class="system-message">
                     <p class="blink">SYSTEM ONLINE...</p>
-                    <p class="alert-text">本日も冴えない顔をしていますね。それでは現実をどうぞ。</p>
+                    <p class="alert-text">本日も冴えない顔がタイムラインに並んでいます。</p>
                 </div>
-                <button id="draw-btn" class="btn-primary">現実を見る（おみくじを引く）</button>
+                
+                <button id="go-draw-btn" class="btn-primary">自分の現実を見る（おみくじ）</button>
+
+                <div class="timeline">
+                    <h3>他人の現実一覧</h3>
+                    
+                    <div class="timeline-item">
+                        <div class="tl-user">ユーザー: たかし（24歳）</div>
+                        <div class="tl-content">
+                            <div class="tl-result">結果：<span>大凶</span></div>
+                            <div class="tl-param-mini">論破率: 100% | 生存率: 5%</div>
+                        </div>
+                        <div class="tl-face-dummy">【絶望した真顔（撮影済）】</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="tl-user">ユーザー: ぴえん丸（19歳）</div>
+                        <div class="tl-content">
+                            <div class="tl-result">結果：<span>凶</span></div>
+                            <div class="tl-param-mini">論破率: 92% | 無駄遣い: 95%</div>
+                        </div>
+                        <div class="tl-face-dummy">【あきれ顔（撮影済）】</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="tl-user">ユーザー: 社畜A（31歳）</div>
+                        <div class="tl-content">
+                            <div class="tl-result"><span class="good-text">いいね</span></div>
+                            <div class="tl-param-mini">※ただし明日死ぬかもしれません</div>
+                        </div>
+                        <div class="tl-face-dummy">【ニヤケ顔（撮影済）】</div>
+                    </div>
+                </div>
             </div>
 
             <div id="result-view" class="view hide">
                 <div class="result-layout">
-                    
                     <div class="result-panel">
                         <h2>今日の現実</h2>
                         <div class="fortune-badge" id="fortune-badge">凶</div>
@@ -63,12 +94,11 @@
                             <p class="ai-advice" id="ai-advice">現実から目を逸らさないでください。</p>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="action-area">
                     <button id="share-btn" class="btn-share">この現実を保存・シェアする</button>
-                    <p class="next-notice">次回の現実通達：明日 08:00</p>
+                    <button id="back-home-btn" class="btn-secondary">➔ ホーム（タイムライン）に戻る</button>
                 </div>
             </div>
         </main>

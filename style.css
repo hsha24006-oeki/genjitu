@@ -1,9 +1,8 @@
-/* 全体のリセットと共通設定 */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
@@ -37,19 +36,18 @@ header h1 {
     padding-bottom: 10px;
 }
 
-/* ビュー制御 */
 .view {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
+    width: 100%;
 }
 
 .hide {
     display: none !important;
 }
 
-/* 初期表示画面 */
 .system-message {
     background-color: #111;
     border-left: 4px solid #ff3333;
@@ -75,7 +73,7 @@ header h1 {
     line-height: 1.6;
 }
 
-/* ボタン共通 */
+/* ボタン設定 */
 button {
     cursor: pointer;
     font-weight: bold;
@@ -93,11 +91,89 @@ button {
     max-width: 400px;
 }
 
-.btn-primary:hover {
-    background-color: #cc0000;
+.btn-primary:hover { background-color: #cc0000; }
+
+.btn-secondary {
+    background-color: transparent;
+    color: #888;
+    border: 1px solid #444;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 20px;
+    margin-top: 10px;
 }
 
-/* 結果表示画面のレイアウト（PCでは横並び、スマホでは縦並び） */
+.btn-secondary:hover {
+    color: #fff;
+    border-color: #888;
+}
+
+/* 【新設】タイムラインUI */
+.timeline {
+    width: 100%;
+    background-color: #111;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 20px;
+    text-align: left;
+}
+
+.timeline h3 {
+    font-size: 15px;
+    color: #888;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 5px;
+}
+
+.timeline-item {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.tl-user {
+    font-size: 12px;
+    color: #ff3333;
+    font-weight: bold;
+}
+
+.tl-result {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.tl-result span {
+    color: #ff3333;
+}
+
+.good-text {
+    color: #00ff66 !important;
+}
+
+.tl-param-mini {
+    font-size: 11px;
+    color: #666;
+}
+
+.tl-face-dummy {
+    font-size: 11px;
+    color: #444;
+    background-color: #0d0d0d;
+    padding: 15px 10px;
+    border-radius: 4px;
+    text-align: center;
+    width: 140px;
+}
+
+/* 結果画面レイアウト */
 .result-layout {
     display: flex;
     gap: 20px;
@@ -105,26 +181,18 @@ button {
 }
 
 @media (max-width: 768px) {
-    .result-layout {
-        flex-direction: column;
-    }
+    .result-layout { flex-direction: column; }
 }
 
-/* 左パネル：おみくじ結果 */
-.result-panel {
+.result-panel, .camera-panel {
     flex: 1;
     background-color: #222;
     border: 1px solid #444;
     border-radius: 6px;
     padding: 20px;
-    text-align: center;
 }
 
-.result-panel h2 {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 15px;
-}
+.result-panel { text-align: center; }
 
 .fortune-badge {
     font-size: 42px;
@@ -140,11 +208,7 @@ button {
     min-height: 40px;
 }
 
-/* パラメータ表示 */
-.parameters {
-    text-align: left;
-    margin-bottom: 25px;
-}
+.parameters { text-align: left; margin-bottom: 25px; }
 
 .param-row {
     margin-bottom: 12px;
@@ -155,9 +219,7 @@ button {
     gap: 10px;
 }
 
-.param-row span {
-    width: 110px;
-}
+.param-row span { width: 110px; }
 
 .bar-container {
     flex: 1;
@@ -174,11 +236,7 @@ button {
     transition: width 1s ease-out;
 }
 
-.param-val {
-    width: 35px !important;
-    text-align: right;
-    font-family: monospace;
-}
+.param-val { width: 35px !important; text-align: right; font-family: monospace; }
 
 .total-eval {
     border-top: 1px dashed #444;
@@ -187,21 +245,7 @@ button {
     font-weight: bold;
 }
 
-#total-eval-val {
-    color: #ff3333;
-}
-
-/* 右パネル：カメラ */
-.camera-panel {
-    flex: 1;
-    background-color: #222;
-    border: 1px solid #444;
-    border-radius: 6px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+#total-eval-val { color: #ff3333; }
 
 .video-wrapper {
     position: relative;
@@ -216,7 +260,7 @@ button {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transform: scaleX(-1); /* 自撮り用に反転 */
+    transform: scaleX(-1);
 }
 
 .camera-overlay {
@@ -231,29 +275,17 @@ button {
     font-weight: bold;
 }
 
-.ai-analysis h3 {
-    font-size: 13px;
-    color: #888;
-    margin-bottom: 8px;
-}
+.ai-analysis h3 { font-size: 13px; color: #888; margin-bottom: 8px; }
 
-#ai-face-analysis {
-    font-size: 14px;
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
+#ai-face-analysis { font-size: 14px; color: #fff; font-weight: bold; margin-bottom: 5px; }
 
-.ai-advice {
-    font-size: 12px;
-    color: #ffaa00;
-}
+.ai-advice { font-size: 12px; color: #ffaa00; }
 
-/* アクションエリア */
 .action-area {
     width: 100%;
-    text-align: center;
-    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .btn-share {
@@ -265,23 +297,6 @@ button {
     border-radius: 20px;
     width: 100%;
     max-width: 300px;
-    margin-bottom: 15px;
 }
 
-.btn-share:hover {
-    background-color: #ccc;
-}
-
-.bereal-badge {
-    background-color: #000;
-    color: #fff;
-    padding: 1px 6px;
-    font-size: 11px;
-    border-radius: 4px;
-    margin-left: 5px;
-}
-
-.next-notice {
-    font-size: 11px;
-    color: #666;
-}
+.btn-share:hover { background-color: #ccc; }
