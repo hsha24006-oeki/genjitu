@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultView = document.getElementById('result-view');
     const video = document.getElementById('video');
 
-    // おみくじデータの定義
     const fortunes = [
         {
             badge: '凶',
@@ -39,11 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     drawBtn.addEventListener('click', async () => {
-        // 1. 画面切り替え
         startView.classList.add('hide');
         resultView.classList.remove('hide');
 
-        // 2. おみくじ結果の抽選 (大凶・凶を多め、いいねを低確率に)
         const rand = Math.random();
         let selected;
         if (rand < 0.1) {
@@ -54,17 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
             selected = fortunes[0]; // 凶 (50%)
         }
 
-        // 3. 結果の流し込み
         document.getElementById('fortune-badge').innerText = selected.badge;
         document.getElementById('system-comment').innerText = selected.comment;
         document.getElementById('total-eval-val').innerText = selected.eval;
         
-        // パラメータ数値テキスト
         document.getElementById('val-ronpa').innerText = `${selected.ronpa}%`;
         document.getElementById('val-muda').innerText = `${selected.muda}%`;
         document.getElementById('val-seizon').innerText = `${selected.seizon}%`;
 
-        // 4. カメラの起動（結果表示後に起動する仕様）
         try {
             const stream = await navigator.mediaDevices.getUserMedia({ 
                 video: { facingMode: 'user' }, 
@@ -78,20 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 5. アニメーション（ディレイをかけてメーターを伸ばし、AI判定を出す）
         setTimeout(() => {
             document.getElementById('bar-ronpa').style.width = `${selected.ronpa}%`;
             document.getElementById('bar-muda').style.width = `${selected.muda}%`;
             document.getElementById('bar-seizon').style.width = `${selected.seizon}%`;
             
-            // AI表情分析の表示
             document.getElementById('ai-face-analysis').innerText = selected.face;
             document.getElementById('ai-advice').innerText = selected.advice;
         }, 500);
     });
 
-    // シェアボタンのダミー動作
+    // シェアボタンの動作を修正
     document.getElementById('share-btn').addEventListener('click', () => {
-        alert('【BeReal連携風】現実とあなたの絶望顔が合成されました。友達に現実を突きつけます。');
+        alert('この画面をスクリーンショットして、友達にあなたの現実を突きつけましょう。');
     });
 });
