@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const goDrawBtn = document.getElementById('go-draw-btn');
     const backHomeBtn = document.getElementById('back-home-btn');
-    const escapeBtn = document.getElementById('escape-btn'); // 逃避ボタン
+    const escapeBtn = document.getElementById('escape-btn');
     const homeView = document.getElementById('home-view');
     const resultView = document.getElementById('result-view');
-    const escapeModal = document.getElementById('escape-modal'); // 逃避画面
+    const escapeModal = document.getElementById('escape-modal');
     const video = document.getElementById('video');
 
     let localStream = null;
@@ -36,15 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // 【新設】現実逃避（猫）ボタンを押したときの処理
+    // 現実逃避ボタンを押したときの処理（1秒でポップアップ無しで消える）
     escapeBtn.addEventListener('click', () => {
-        // 優しい世界（モーダル）を表示
         escapeModal.classList.remove('hide');
 
-        // 正確に1秒（1000ミリ秒）後に強制終了して現実に戻す
+        // ポップアップを削除し、1秒後にただ画面を閉じる
         setTimeout(() => {
             escapeModal.classList.add('hide');
-            alert('現実を見ろ。');
         }, 1000);
     });
 

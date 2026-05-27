@@ -48,7 +48,6 @@ header h1 {
     display: none !important;
 }
 
-/* ホーム画面のヘッダーレイアウト */
 .home-header-area {
     display: flex;
     width: 100%;
@@ -64,11 +63,10 @@ header h1 {
     text-align: left;
 }
 
-/* 現実逃避ボタン（猫） */
 .btn-escape {
-    background-color: #2e1a4d;
-    color: #cc99ff;
-    border: 1px solid #5c3399;
+    background-color: #222;
+    color: #888;
+    border: 1px solid #444;
     border-radius: 4px;
     padding: 10px 15px;
     font-size: 11px;
@@ -77,7 +75,7 @@ header h1 {
     transition: all 0.2s;
 }
 .btn-escape:hover {
-    background-color: #442673;
+    background-color: #333;
     color: #fff;
 }
 
@@ -98,7 +96,6 @@ header h1 {
     line-height: 1.4;
 }
 
-/* ボタン設定 */
 button {
     font-weight: bold;
     transition: all 0.2s ease;
@@ -127,7 +124,6 @@ button {
 }
 .btn-secondary:hover { color: #fff; border-color: #888; }
 
-/* タイムラインUI */
 .timeline {
     width: 100%;
     background-color: #111;
@@ -172,7 +168,6 @@ button {
     width: 140px;
 }
 
-/* 結果画面レイアウト */
 .result-layout {
     display: flex;
     gap: 20px;
@@ -267,11 +262,11 @@ button {
 }
 .btn-share:hover { background-color: #ccc; }
 
-/* 【新設】現実逃避画面（モーダル）のスタイル */
+/* 現実逃避モーダルのスタイル */
 .escape-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: #ffe6f2; /* ここだけピンクの優しい世界 */
+    background-color: #ffe6f2;
     color: #ff66a3;
     display: flex;
     justify-content: center;
@@ -286,10 +281,10 @@ button {
     box-shadow: 0 10px 25px rgba(255,102,163,0.2);
     max-width: 90%;
 }
-.cat-icon { font-size: 60px; margin-bottom: 15px; animation: bounce 0.5s infinite alternate; }
-@keyframes bounce { 
-    from { transform: translateY(0); } 
-    to { transform: translateY(-10px); } 
+.heart-icon { font-size: 60px; margin-bottom: 15px; animation: heartbeat 0.8s infinite alternate; }
+@keyframes heartbeat { 
+    from { transform: scale(1); } 
+    to { transform: scale(1.1); } 
 }
 .escape-content h2 { font-size: 22px; margin-bottom: 10px; font-weight: bold; }
 .escape-content p { font-size: 14px; color: #666; }
